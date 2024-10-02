@@ -1,0 +1,43 @@
+{
+    "name": "alifuz/utils-prometheus",
+    "description": "Package for prometheus",
+    "version": "1.0.0",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Iskandar Rakhimov",
+            "email": "iiskanr@yandex.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.0",
+        "myclabs/php-enum": "^1.8",
+        "illuminate/contracts": "^8.0|^9.0|^10.0",
+        "illuminate/support": "^8.0|^9.0|^10.0",
+        "ext-json": "*",
+        "alifuz/utils" : "^1.0",
+        "guzzlehttp/guzzle": "^7.2",
+        "promphp/prometheus_client_php": "^2.11"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0|^7.0|^8.0",
+        "friendsofphp/php-cs-fixer": "^3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alifuz\\Utils\\Promethes\\": "src/"
+        }
+    },
+    "scripts": {
+        "cs-check" :  ["./vendor/bin/php-cs-fixer fix -vvv --dry-run --show-progress=dots --config=.php-cs-fixer.php --allow-risky=yes"],
+        "cs-fix" : ["./vendor/bin/php-cs-fixer fix -vvv --show-progress=dots --config=.php-cs-fixer.php --allow-risky=yes"]
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://gitlab.alifshop.uz/packages/backend/backend-utils.git"
+        }
+    ]
+}
