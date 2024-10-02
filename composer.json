@@ -1,7 +1,6 @@
 {
     "name": "alifuz/prometheus",
     "description": "Package for prometheus",
-    "version": "1.0.0",
     "type": "library",
     "authors": [
         {
