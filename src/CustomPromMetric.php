@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace src;
+namespace Alifuz\Prometheus;
 
 use Carbon\Carbon;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\Create;
+use GuzzleHttp\Promise\PromiseInterface;
 use Prometheus\CollectorRegistry;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use GuzzleHttp\Promise\PromiseInterface;
-use GuzzleHttp\Exception\RequestException;
 use Throwable;
 
 class CustomPromMetric
@@ -19,8 +19,7 @@ class CustomPromMetric
 
     public function __construct(
         private string $service_name,
-    )
-    {
+    ) {
         $this->startTime = now();
     }
 
@@ -42,8 +41,7 @@ class CustomPromMetric
      */
     private function handleSuccess(
         RequestInterface $request,
-    ): callable
-    {
+    ): callable {
         return function (ResponseInterface $response) use ($request) {
             $this->writeLog(
                 request: $request,
@@ -62,8 +60,7 @@ class CustomPromMetric
      */
     private function handleFailure(
         RequestInterface $request,
-    ): callable
-    {
+    ): callable {
         return function (Throwable $reason) use ($request) {
             $response = $reason instanceof RequestException ? $reason->getResponse() : null;
 
@@ -81,8 +78,7 @@ class CustomPromMetric
         RequestInterface $request,
         ResponseInterface $response = null,
         Throwable|null $reason = null,
-    ): void
-    {
+    ): void {
         /** @var CollectorRegistry $collector */
         $collector = app()->get(CollectorRegistry::class);
 
