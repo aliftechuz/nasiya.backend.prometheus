@@ -9,7 +9,7 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "git@gitlab.alifshop.uz:packages/backend/prometheus.git"
+      "url": "https://gitlab.alifshop.uz:packages/backend/prometheus.git"
     }
   ]
 }
